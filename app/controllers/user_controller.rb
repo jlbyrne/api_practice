@@ -7,8 +7,8 @@ class UserController < ApplicationController
   end
 
   def create
-    Rails.logger("* "*100)
-    Rails.logger(params)
+    p "* "*100
+    p params
     user = user.new(params[:user])
     if user.save
       render :json => user
