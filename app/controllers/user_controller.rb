@@ -8,7 +8,7 @@ class UserController < ApplicationController
   end
 
   def create
-    user = user.new(params[:user])
+    user = User.new(params[:user])
     if user.save
       render :json => user
     else
