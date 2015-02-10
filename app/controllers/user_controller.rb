@@ -1,5 +1,6 @@
 class UserController < ApplicationController
   respond_to :json
+  skip_before_filter :verify_authenticity_token, only: [:create, :update, :destroy]
   
   def index
     users = User.all
@@ -7,8 +8,6 @@ class UserController < ApplicationController
   end
 
   def create
-    p "* "*100
-    p params
     user = user.new(params[:user])
     if user.save
       render :json => user
