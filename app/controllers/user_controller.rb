@@ -8,10 +8,15 @@ class UserController < ApplicationController
   end
 
   def create
+    p "^ "*100
     user = User.new(params[:user])
+    p "* "*100
+    p user
     if user.save
       render :json => user
     else
+      p "# "*100
+      p user.errors
       render :json => user.errors, status: :bad_request
     end
   end
