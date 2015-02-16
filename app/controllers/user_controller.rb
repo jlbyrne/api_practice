@@ -8,12 +8,7 @@ class UserController < ApplicationController
   end
 
   def create
-    p "^ "*100
-    p params[:user]
-    p User.new
     user = User.new(params[:user])
-    p "* "*100
-    p user
     if user.save
       render :json => user
     else
