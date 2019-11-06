@@ -8,8 +8,6 @@ class UserController < ApplicationController
   end
 
   def create
-    p "*"*100
-    p params
     user = User.new(params.require(:user).permit(:name, :color, :number))
     if user.save
       render :json => user
