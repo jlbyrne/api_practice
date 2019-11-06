@@ -8,7 +8,9 @@ class UserController < ApplicationController
   end
 
   def create
-    user = User.new(params[:user])
+    p "*"*100
+    p params
+    user = User.new(params.require(:user).permit(:name, :color, :number))
     if user.save
       render :json => user
     else
