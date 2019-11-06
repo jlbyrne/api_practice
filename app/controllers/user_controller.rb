@@ -1,6 +1,6 @@
 class UserController < ApplicationController
   respond_to :json
-  skip_before_filter :verify_authenticity_token, only: [:create, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
   
   def index
     users = User.all
