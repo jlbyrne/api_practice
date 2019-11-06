@@ -27,5 +27,13 @@ module ApiPractice
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.api_only = true
+
+    config.middleware.insert_before 0, Rack::Cors, :logger => (-> { Rails.logger }) do
+      allow do
+        origins '[http://localhost:3000, http://jennybyrne.com]'
+        resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :options, :head]
+      end
+    end
+    config.logger = Logger.new(STDOUT)
   end
 end
